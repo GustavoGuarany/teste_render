@@ -1,0 +1,108 @@
+<!-- Adicione o CSS do Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container">
+  <h1 class="mb-4">Tarefas</h1>
+
+  <%= link_to 'Nova Tarefa', new_task_path, class: 'btn btn-primary mb-3' %>
+
+  <!-- ---------->
+
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Concluída?</th>
+        <th>Grau de prioridade</th>
+        <th>Prazo de Entrega</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.prazo_entrega && task.prazo_entrega >= Time.now %>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.completed ? 'Sim' : 'Não' %></td>
+            <td><%= task.priority %></td>
+            <td><%= configura_prazo(task.prazo_entrega) %></td>
+            <td>
+              <%= link_to 'Editar', edit_task_path(task), class: 'btn btn-secondary btn-sm' %> |
+              <%= link_to 'Excluir', task, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %> |
+              <%= link_to (task.completed? ? 'Desmarcar' : 'Marcar'), toggle_task_path(task), class: 'btn btn-info btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    
+  </table>
+
+  <!-- ---------->
+
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Concluída?</th>
+        <th>Grau de prioridade</th>
+        <th>Prazo de Entrega</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.prazo_entrega && task.prazo_entrega <= Time.now %>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.completed ? 'Sim' : 'Não' %></td>
+            <td><%= task.priority %></td>
+            <td><%= configura_prazo(task.prazo_entrega) %></td>
+            <td>
+              <%= link_to 'Editar', edit_task_path(task), class: 'btn btn-secondary btn-sm' %> |
+              <%= link_to 'Excluir', task, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %> |
+              <%= link_to (task.completed? ? 'Desmarcar' : 'Marcar'), toggle_task_path(task), class: 'btn btn-info btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    
+  </table>
+
+  <!-- ---------->
+
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Concluída?</th>
+        <th>Grau de prioridade</th>
+        <th>Prazo de Entrega</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.completed ? 'Sim' : 'Não' %></td>
+          <td><%= task.priority %></td>
+          <td><%= configura_prazo(task.prazo_entrega) %></td>
+          <td>
+            <%= link_to 'Editar', edit_task_path(task), class: 'btn btn-secondary btn-sm' %> |
+            <%= link_to 'Excluir', task, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %> |
+            <%= link_to (task.completed? ? 'Desmarcar' : 'Marcar'), toggle_task_path(task), class: 'btn btn-info btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    
+  </table>
+</div>

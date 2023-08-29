@@ -1,0 +1,26 @@
+<h1>Nova Tarefa</h1>
+
+<%= form_with model: @task do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
+  </div>
+  <div>
+    <%= form.label :priority %>
+    <%= form.select :priority, options_for_select([1, 2, 3], @task.priority) %>
+  </div>
+  <div>
+    <%= form.label :prazo_entrega, "Prazo de Entrega" %>
+    <%= form.datetime_select :prazo_entrega %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

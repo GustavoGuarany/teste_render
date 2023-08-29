@@ -1,0 +1,16 @@
+<p>Title</p>
+
+<%= @descricao %>
+<br>
+<% 
+	autor = "Icaro" 
+	titulo = "Livro rasgado" 
+	livro = TestesController::Livro.new(titulo, autor)
+	descricao2 = livro.descricao
+
+	
+	descricao3 = livro.desc_upcase(descricao2)
+%>
+
+<%= descricao2 %><br>
+<%= descricao3 %>
